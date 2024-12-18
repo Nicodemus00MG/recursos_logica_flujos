@@ -13,96 +13,73 @@
             align-items: center;
             min-height: 100vh;
             background-color: #1E2541;
-            /* Un gris más claro y agradable */
             margin: 0;
             color: #333;
-            /* Color de texto principal más legible */
-            /* Estilos para la imagen de fondo */
-            background-image: url("https://raw.githubusercontent.com/Nicodemus00MG/recursos_logica_flujos/e565e899c8d408f7772f81c8fef980ae2b740bf2/nivel2/img/logica_favicon_blanco.svg?token=ASOBNKX3ZEH7VOWXT35U65LHMGTCW");
-            background-repeat: no-repeat;
-            /* Evita que la imagen se repita */
-            background-position: bottom right;
-            /* Posiciona la imagen en la esquina inferior derecha */
-            background-size: contain;
-            /* Ajusta la imagen para que quepa completamente en el contenedor, manteniendo su proporción */
-            /* Opcional: Para que la imagen ocupe un porcentaje del ancho o alto: background-size: 30%; */
+            position: relative;
+            /* Importante para el posicionamiento absoluto del fondo */
+            overflow: hidden;
+            /* Oculta cualquier parte de la imagen que se salga del body */
+        }
+
+        .background-image {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: auto;
+            height: auto;
+            max-width: 50%;
+            /* Ajusta el tamaño máximo de la imagen */
+            z-index: -1;
+            /* Coloca la imagen detrás del contenido */
         }
 
         .card {
             background-color: #ffffff;
             border-radius: 10px;
-            /* Bordes un poco más redondeados */
-            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.50);
-            /* Sombra más pronunciada pero suave */
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.75);
             padding: 30px;
-            /* Más espacio interno */
             text-align: center;
             max-width: 600px;
-            /* Un poco más ancho para mejor legibilidad */
             width: 95%;
-            /* Mejor adaptabilidad a móviles */
             margin: 20px;
+            position: relative;
+            /* Para que el contenido esté por encima del fondo */
         }
 
-        .logo {
-            max-width: 250px;
-            /* Logo un poco más grande */
-            margin-bottom: 25px;
-        }
-
-        .title {
-            font-size: 1.5em;
-            /* Título más grande */
-            font-weight: 600;
-            /* Título más destacado */
-            margin-bottom: 15px;
-            color: #2c3e50;
-            /* Color más profesional */
-        }
-
-        .message {
-            font-size: 1.1em;
-            /* Texto un poco más grande */
-            line-height: 1.6;
-            /* Espaciado entre líneas para mejor lectura */
-            margin-bottom: 25px;
-            color: #555;
-        }
-
-        .message span {
-            font-weight: bold;
-        }
-
-        .footer {
-            font-size: 0.9em;
-            color: #7f8c8d;
-            /* Gris más suave para el pie de página */
-            margin-top: 20px;
-            border-top: 1px solid #eee;
-            /* Línea divisoria sutil */
-            padding-top: 15px;
-            /* Espacio sobre la línea */
-        }
-
-        .final-message {
-            /* Estilo para el nuevo mensaje */
+        .final-message{
+            font-size: small;
             font-style: italic;
-            /* Texto en cursiva */
-            color: #7f8c8d;
+            font-weight: 100;
+        }
+
+        .footer{
+            font-size: small;
+            font-style: italic;
+            color: #8d8d8d;
+        }
+        .imagen_state{
+            width: 90px;
+        }
+        .message{
+            font-weight: 400;
+            
         }
     </style>
-</head>
 
-<body>
+
+
+    <img class="background-image" src="https://raw.githubusercontent.com/Nicodemus00MG/recursos_logica_flujos/e565e899c8d408f7772f81c8fef980ae2b740bf2/nivel2/img/logica_favicon_blanco.svg" alt="Imagen de fondo">
 
     <div class="card">
-        <img class="logo" src="https://logica.com.ec/wp-content/uploads/2023/07/logica-logo-black.png"
-            alt="logo_logica_svg">
-        <h2 class="title">Tu solicitud ha avanzado</h2>
-        <p class="message">Tu solicitud <span>tipo_sol_identificador_dinamico_MS</span> se encuentra en la etapa de
-            Aprobación de Nivel 2 y está en proceso de validación de información.</p>
-        <p class="final-message">Tu solicitud ha sido remitida a Gerencia para la finalización del flujo de aprobación.
-        </p>
+        <img class="logo" src="https://logica.com.ec/wp-content/uploads/2023/07/logica-logo-black.png" alt="logo_logica_svg">
+        <h2 class="title">Tu ha sido <strong>APROBADA</strong></h2>
+        <img class="imagen_state"src="https://cdn2.iconfinder.com/data/icons/greenline/512/check-512.png" alt="logo_cancelacion_icon">
+
+        <p class="message">Tu solicitud tipo REPOSO MEDICO, con ID #@{triggerBody()?['ID']} se   encuentra en estado de solicitud: <strong> APROBADA </strong> por GERENCIA (Aprobación de Segundo Nivel) </p>
+        <p class="final-message"> Tu solicitud ha culminado con el flujo de aprobación </p>
+        <p class="final-message">Para petición de nuevas solicitudes , utilice el <strong>sistema de soliciutdes RRHH 2024</strong> - Logica</p>
+        <br>
+        <hr>
         <p class="footer">Este es un correo automático, por favor no responder.</p>
     </div>
 
